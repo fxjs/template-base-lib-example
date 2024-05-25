@@ -1,0 +1,45 @@
+{
+  "name": "template-base-lib-example",
+  "private": false,
+  "version": "0.0.0",
+  "author": "zyy",
+  "type": "module",
+  "main": "dist/base-lib-example.umd.js",
+  "module": "./dist/base-lib-example.es.js",
+  "unpkg": "./dist/base-lib-example.umd.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint --ext .js,.ts ./",
+    "lint:fix": "eslint --ext .js,.ts ./ --fix",
+    "prepare": "husky install",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-angular": "^17.6.7",
+    "@tanzerfe/eslint-config-lint": "^0.0.5",
+    "@types/node": "^20.4.2",
+    "eslint": "^8.10.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint --ignore-path .eslintignore ./ --fix"
+  }
+}
